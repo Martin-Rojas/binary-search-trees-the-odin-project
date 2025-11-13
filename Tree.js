@@ -4,7 +4,7 @@ export class Tree {
   constructor(root = null) {
     this.root = root;
   }
-/** First mergeSort the array, after delete duplicates */
+  /** First mergeSort the array, after delete duplicates */
   buildTree(array) {
     function merge(left, right) {
       let mergeArray = [];
@@ -40,6 +40,15 @@ export class Tree {
       return merge(sortedLeft, sortedRight);
     }
 
-    return mergeSort(array)
+    const sortedArr = mergeSort(array);
+
+    let noDuplicates = [];
+
+    sortedArr.forEach((number) => {
+      if (!noDuplicates.includes(number)) {
+        noDuplicates.push(number);
+      }
+    });
+    return noDuplicates;
   }
 }
