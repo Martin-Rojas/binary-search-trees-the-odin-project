@@ -51,7 +51,7 @@ export class Tree {
     });
 
     // 3. Call recursive function to build the tree
-    return buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
+    //return buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
 
     // Helper function that builds the BST using recursion
     function buildBalancedBST(arr, start, end) {
@@ -71,7 +71,14 @@ export class Tree {
       root.right = buildBalancedBST(arr, mid + 1, end);
 
       // 8. Return root (this bubbles up until the full tree is built)
-      return this.root;
+      return root;
     }
+
+     // Build and save the root
+     this.root = buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
+
+     return this.root;
   }
+
+  /** Print the tree */
 }
