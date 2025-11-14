@@ -49,6 +49,29 @@ export class Tree {
         noDuplicates.push(number);
       }
     });
-    return noDuplicates;
+
+    // 3. Call recursive function to build the tree
+    return buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
+
+    // Helper function that builds the BST using recursion
+    function buildBalancedBST(arr, start, end) {
+      // Base case: if start crosses end → no tree (empty)
+      if (start > end) return null;
+
+      // 4. Pick the middle element — this keeps the tree balanced
+      let mid = Math.floor((start + end) / 2);
+
+      // 5. Create a node from the mid value
+      let root = new Node(arr[mid]);
+
+      // 6. Build left subtree from left half of array
+      root.left = buildBalancedBST(arr, start, mid - 1);
+
+      // 7. Build right subtree from right half of array
+      root.right = buildBalancedBST(arr, mid + 1, end);
+
+      // 8. Return root (this bubbles up until the full tree is built)
+      return this.root;
+    }
   }
 }
