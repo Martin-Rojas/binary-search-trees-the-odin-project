@@ -50,9 +50,6 @@ export class Tree {
       }
     });
 
-    // 3. Call recursive function to build the tree
-    //return buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
-
     // Helper function that builds the BST using recursion
     function buildBalancedBST(arr, start, end) {
       // Base case: if start crosses end → no tree (empty)
@@ -65,20 +62,49 @@ export class Tree {
       let root = new Node(arr[mid]);
 
       // 6. Build left subtree from left half of array
-      root.left = buildBalancedBST(arr, start, mid - 1);
+      root.leftNode = buildBalancedBST(arr, start, mid - 1);
 
       // 7. Build right subtree from right half of array
-      root.right = buildBalancedBST(arr, mid + 1, end);
+      root.rightNode = buildBalancedBST(arr, mid + 1, end);
 
       // 8. Return root (this bubbles up until the full tree is built)
       return root;
     }
 
-     // Build and save the root
-     this.root = buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
+    // Build and save the root
+    this.root = buildBalancedBST(noDuplicates, 0, noDuplicates.length - 1);
 
-     return this.root;
+    return this.root;
   }
 
-  /** Print the tree */
+  /** Insert new value into the tree */
+  insert(value) {
+    const newNode = new Node(value);
+    // If the tree is empty (root is null),
+    // make the new node the root and stop.
+    if (this.root === null) {
+      this.root = newNode;
+      return;
+    }
+
+    let currentNode = this.root;
+    while (true) {
+      /** If value < current.data → we must place it in the left subtree. */
+      if (newNode.data < currentNode.data) {
+        if (currentNode.leftNode === null) {
+          currentNode.leftNode = newNode;
+          return;
+        }
+        currentNode = currentNode.leftNode;
+
+      } // If value > current.data → we must place it in the right subtree.
+      else { 
+        if (currentNode.rightNode === null) {
+          currentNode.rightNode = newNode;
+          return;
+        }
+        currentNode = currentNode.rightNode;
+      }
+    }
+  }
 }
