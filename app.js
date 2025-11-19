@@ -18,7 +18,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 prettyPrint(tree.root);
 
-tree.insert(2);
+tree.insert(8);
+tree.insert(1000);
+tree.insert(23);
+tree.insert(0);
 
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 

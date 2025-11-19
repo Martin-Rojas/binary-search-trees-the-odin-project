@@ -88,7 +88,14 @@ export class Tree {
     }
 
     let currentNode = this.root;
+
     while (true) {
+      // Duplicate value check
+      if (newNode.data === currentNode.data) {
+        console.log("Value already exists in the tree:", value);
+        return; 
+      }
+
       /** If value < current.data → we must place it in the left subtree. */
       if (newNode.data < currentNode.data) {
         if (currentNode.leftNode === null) {
@@ -96,9 +103,8 @@ export class Tree {
           return;
         }
         currentNode = currentNode.leftNode;
-
       } // If value > current.data → we must place it in the right subtree.
-      else { 
+      else {
         if (currentNode.rightNode === null) {
           currentNode.rightNode = newNode;
           return;
