@@ -18,11 +18,13 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 prettyPrint(tree.root);
 
-tree.insert(8);
+//tree.insert(8);
 tree.insert(1000);
-tree.insert(23);
+//tree.insert(23);
 tree.insert(0);
 
-console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-prettyPrint(tree.root);
+//prettyPrint(tree.root);
+
+tree.deleteItem(3);

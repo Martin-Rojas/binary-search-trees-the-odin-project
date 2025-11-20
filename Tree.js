@@ -93,7 +93,7 @@ export class Tree {
       // Duplicate value check
       if (newNode.data === currentNode.data) {
         console.log("Value already exists in the tree:", value);
-        return; 
+        return;
       }
 
       /** If value < current.data → we must place it in the left subtree. */
@@ -112,5 +112,23 @@ export class Tree {
         currentNode = currentNode.rightNode;
       }
     }
+  }
+
+  deleteItem(value) {
+    // Start at the root.
+    let currentNode = this.root;
+    let parent = null;
+
+    // Search for the node and keep track of parent
+    while (currentNode !== null && currentNode.data !== value) {
+      parent = currentNode;
+
+      if (value < currentNode.data) {
+        currentNode = currentNode.leftNode;
+      } else {
+        currentNode = currentNode.rightNode;
+      }
+    }
+    console.log(currentNode);
   }
 }
