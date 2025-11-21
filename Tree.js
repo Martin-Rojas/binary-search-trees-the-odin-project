@@ -147,6 +147,20 @@ export class Tree {
       } else {
         parentNode.rightNode = null;
       }
+    } else if (
+      currentNode.leftNode !== null &&
+      currentNode.rightNode === null
+    ) {
+      /** If the node has one child */
+      // If the node is the root
+      if (currentNode === this.root) {
+        this.root = null;
+        return;
+      }
+      console.log(parentNode);
+      console.log(currentNode);
+
+      parentNode.leftNode = currentNode.leftNode;
     }
   }
 }

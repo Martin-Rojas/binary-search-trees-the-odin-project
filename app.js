@@ -27,6 +27,10 @@ console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
 //prettyPrint(tree.root);
 
-tree.deleteItem(3);
+tree.deleteItem(3); // node has no child
+
+
+prettyPrint(tree.root);
+tree.deleteItem(1); // node has one child
 
 prettyPrint(tree.root);
