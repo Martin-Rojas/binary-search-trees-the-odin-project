@@ -28,3 +28,5 @@ console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 //prettyPrint(tree.root);
 
 tree.deleteItem(3);
+
+prettyPrint(tree.root);

@@ -117,11 +117,11 @@ export class Tree {
   deleteItem(value) {
     // Start at the root.
     let currentNode = this.root;
-    let parent = null;
+    let parentNode = null;
 
     // Search for the node and keep track of parent
     while (currentNode !== null && currentNode.data !== value) {
-      parent = currentNode;
+      parentNode = currentNode;
 
       if (value < currentNode.data) {
         currentNode = currentNode.leftNode;
@@ -129,6 +129,24 @@ export class Tree {
         currentNode = currentNode.rightNode;
       }
     }
-    console.log(currentNode);
+
+    // Value not found
+    if (currentNode === null) return;
+
+    // If node has no child
+    if (currentNode.leftNode === null && currentNode.rightNode == null) {
+      // If the node is the root
+      if (currentNode === this.root) {
+        this.root = null;
+        return;
+      }
+
+      // Remove child reference from parent
+      if (parentNode.leftNode === currentNode) {
+        parentNode.leftNode = null;
+      } else {
+        parentNode.rightNode = null;
+      }
+    }
   }
 }
