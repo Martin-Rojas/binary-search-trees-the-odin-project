@@ -122,7 +122,7 @@ export class Tree {
     // Search for the node and keep track of parent
     while (currentNode !== null && currentNode.data !== value) {
       parentNode = currentNode;
-
+      // Check if the pointer goes left or right of the tree
       if (value < currentNode.data) {
         currentNode = currentNode.leftNode;
       } else {
@@ -134,7 +134,7 @@ export class Tree {
     if (currentNode === null) return;
 
     // If node has no child
-    if (currentNode.leftNode === null && currentNode.rightNode == null) {
+    if (currentNode.leftNode === null && currentNode.rightNode === null) {
       // If the node is the root
       if (currentNode === this.root) {
         this.root = null;
@@ -147,20 +147,38 @@ export class Tree {
       } else {
         parentNode.rightNode = null;
       }
-    } else if (
+    } /** If the node has one child left */ else if (
       currentNode.leftNode !== null &&
       currentNode.rightNode === null
+    ) {
+      // If the node is the root
+      if (currentNode === this.root) {
+        this.root = currentNode.leftNode;
+        return;
+      }
+      // choose if the parent node will bw left or rigth
+      if (parentNode.leftNode === currentNode) {
+        parentNode.leftNode = currentNode.leftNode;
+      } else {
+        parentNode.rightNode = currentNode.leftNode;
+      }
+    } else if (
+      currentNode.leftNode === null &&
+      currentNode.rightNode !== null
     ) {
       /** If the node has one child */
       // If the node is the root
       if (currentNode === this.root) {
-        this.root = null;
+        this.root = currentNode.rightNode;
         return;
       }
-      console.log(parentNode);
-      console.log(currentNode);
 
-      parentNode.leftNode = currentNode.leftNode;
+      // choose if the parent node will be left or rigth
+      if (parentNode.rightNode === currentNode) {
+        parentNode.rightNode = currentNode.rightNode;
+      } else {
+        parentNode.leftNode = currentNode.rightNode;
+      }
     }
   }
 }
