@@ -196,7 +196,29 @@ export class Tree {
     return currentNode;
   }
   // Function that accepts a callback function as its parameter
-  levelOrderForEach(callback) {
-    /**  */
+  levelOrderForEach(callback = null) {
+    // root is null return emptry array
+    // Start at the root.
+    if (!this.root) return [];
+    // Put it into a queue.
+    const queue = [this.root];
+    const result = [];
+    // While the queue has nodes:
+    while (queue.length > 0) {
+      // Take the next node from the front
+      let currentNode = queue.shift();
+      // If callback exists → call it for the current node
+      if (callback) {
+        callback(currentNode.data);
+      } else {
+        result.push(currentNode.data);
+      }
+      // Add children to queue
+      if (currentNode.leftNode) queue.push(currentNode.leftNode);
+      if (currentNode.rightNode) queue.push(currentNode.rightNode);
+    }
+
+    // Only return the result if NO callback was used
+    return callback ? undefined : result;
   }
 }

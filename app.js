@@ -39,3 +39,5 @@ prettyPrint(tree.root);
 //prettyPrint(tree.root);
 
 console.log(tree.find(4) + " found it");
+
+console.log(tree.levelOrderForEach());
