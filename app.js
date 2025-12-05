@@ -37,3 +37,5 @@ prettyPrint(tree.root);
 //tree.deleteItem(5); // node has one child right
 
 //prettyPrint(tree.root);
+
+console.log(tree.find(4) + " found it");

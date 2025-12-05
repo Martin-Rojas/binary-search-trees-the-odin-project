@@ -181,4 +181,22 @@ export class Tree {
       }
     }
   }
+
+  /* Function that returns the node with the given value */
+  find(value) {
+    let currentNode = this.root;
+
+    while (currentNode !== null && currentNode.data !== value) {
+      if (value < currentNode.data) {
+        currentNode = currentNode.leftNode;
+      } else {
+        currentNode = currentNode.rightNode;
+      }
+    }
+    return currentNode;
+  }
+  // Function that accepts a callback function as its parameter
+  levelOrderForEach(callback) {
+    /**  */
+  }
 }
