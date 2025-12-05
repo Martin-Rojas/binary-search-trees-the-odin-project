@@ -219,6 +219,8 @@ export class Tree {
     }
 
     // Only return the result if NO callback was used
-    return callback ? undefined : result;
+    return callback ? undefined : "needs a callback function";
   }
+
+  /**  */
 }
