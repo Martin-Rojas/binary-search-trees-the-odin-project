@@ -222,8 +222,9 @@ export class Tree {
     return callback ? undefined : "needs a callback function";
   }
 
-  /** Traverse the tree    */
+  /** Traverse the tree  pre Order  */
   preOrderForEach(callback) {
+    if (!callback) throw new Error("Callback is required.");
     if (!this.root) return;
 
     const stack = [this.root]; // Start with the root node
@@ -238,4 +239,17 @@ export class Tree {
       if (current.leftNode) stack.push(current.leftNode);
     }
   }
+  /** Traverse the BST In Order recursion version*/
+  inOrderForEach(callback) {
+    if (!callback) throw new Error("Callback is required.");
+
+    function traverse(node) {
+      if (!node) return;
+      traverse(node.leftNode);
+      callback(node.data);
+      traverse(node.rightNode);
+    }
+    traverse(this.root)
+  }
+  
 }
