@@ -38,8 +38,8 @@ prettyPrint(tree.root);
 
 //prettyPrint(tree.root);
 
-console.log(tree.find(4) + " found it");
+// console.log(tree.find(4) + " found it");
 
-console.log(tree.levelOrderForEach());
+//tree.levelOrderForEach((data) => console.log(data));
 
-tree.levelOrderForEach((data) => console.log(data));
+tree.preOrderForEach((data) => console.log(data));

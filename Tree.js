@@ -222,5 +222,20 @@ export class Tree {
     return callback ? undefined : "needs a callback function";
   }
 
-  /**  */
+  /** Traverse the tree    */
+  preOrderForEach(callback) {
+    if (!this.root) return;
+
+    const stack = [this.root]; // Start with the root node
+
+    while (stack.length > 0) {
+      const current = stack.pop(); // Take the top item from the stack
+
+      callback(current.data); // Apply the callback to the current node's value
+
+      // Push RIGHT first so LEFT is processed first (stack = LIFO)
+      if (current.rightNode) stack.push(current.rightNode);
+      if (current.leftNode) stack.push(current.leftNode);
+    }
+  }
 }
