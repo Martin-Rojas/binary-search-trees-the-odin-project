@@ -249,7 +249,19 @@ export class Tree {
       callback(node.data);
       traverse(node.rightNode);
     }
-    traverse(this.root)
+    traverse(this.root);
   }
-  
+
+  /** Traverse the BST Post Order recursion version*/
+  postOrderForEach(callback) {
+    if (!callback) throw new Error(`callback is required`);
+
+    function traverse(node) {
+      if (!node) return;
+      traverse(node.leftNode);
+      traverse(node.rightNode);
+      callback(node.data);
+    }
+    traverse(this.root);
+  }
 }

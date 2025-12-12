@@ -46,3 +46,6 @@ tree.preOrderForEach((data) => console.log(data));
 
 console.log(`==============================`);
 tree.inOrderForEach((node) => console.log(node));
+console.log(`+++++++++++++++++++++++++++++++++`);
+
+tree.postOrderForEach(node => console.log(node))
