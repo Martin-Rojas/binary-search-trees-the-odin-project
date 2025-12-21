@@ -48,4 +48,9 @@ console.log(`==============================`);
 tree.inOrderForEach((node) => console.log(node));
 console.log(`+++++++++++++++++++++++++++++++++`);
 
-tree.postOrderForEach(node => console.log(node))
+tree.postOrderForEach((node) => console.log(node));
+
+console.log(`=====================3232=============`);
+console.log(tree.depth(1000));
+console.log(tree.depth(1));
+console.log(tree.depth(0));

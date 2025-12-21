@@ -264,4 +264,28 @@ export class Tree {
     }
     traverse(this.root);
   }
+  /** Function that returns the depth of the node containing the given value.  */
+  depth(value) {
+    // Get the start of the tree
+    let currentNode = this.root;
+
+    // Count how many edges from root to the node
+    let edges = 0;
+
+    // Treverse the tree
+    while (currentNode !== null) {
+      // Compare the current node.data to value
+      if (currentNode.data === value) return edges;
+      // Decide if go left or right
+      if (value < currentNode.data) {
+        currentNode = currentNode.leftNode;
+      } else {
+        currentNode = currentNode.rightNode;
+      }
+      // Each move down one level adds one edge
+      edges++;
+    }
+    // Return 0 if the value doesn't exits in the tree
+    return null;
+  }
 }
