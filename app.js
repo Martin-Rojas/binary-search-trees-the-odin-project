@@ -54,3 +54,9 @@ console.log(`=====================3232=============`);
 console.log(tree.depth(1000));
 console.log(tree.depth(1));
 console.log(tree.depth(0));
+
+console.log(`===============8291============`);
+console.log(tree.height(324));
+console.log(tree.height(8));
+console.log(tree.height(6345));
+console.log(tree.height(34));

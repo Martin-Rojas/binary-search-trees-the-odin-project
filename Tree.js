@@ -288,4 +288,54 @@ export class Tree {
     // Return 0 if the value doesn't exits in the tree
     return null;
   }
+  /** Function that returns the height of the node containing the given value. */
+  height(value) {
+    function findNode(node) {
+      // Base case if a node equals to null, it will return null
+      if (!node) return null;
+      // If the node data match value it'll return node
+      if (node.data === value) return node;
+      // Decide if goes left or right
+      if (value < node.data) {
+        return findNode(node.leftNode);
+      } else {
+        return findNode(node.rightNode);
+      }
+    }
+    // Step 2: Iteratively calculate height from this node
+    let maxHeight = 0;
+
+    // Stack will store nodes along with their current height
+    let stack = [];
+    // Call findNode to get start node
+    let startNode = findNode(this.root);
+    // return null if the node is not the tree
+    if (startNode === null) return null;
+    // Push the startNode and it's height
+    stack.push({ node: startNode, height: 0 });
+
+    // Iterates untils the stack lenth is zero
+    while (stack.length > 0) {
+      let item = stack.pop();
+      let node = item.node;
+      let height = item.height;
+
+      // Update maxHeight manually
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+
+      // Push left child with increased height
+      if (node.leftNode !== null) {
+        stack.push({ node: node.leftNode, height: height + 1 });
+      }
+
+      // Push right child with increased height
+      if (node.rightNode !== null) {
+        stack.push({ node: node.rightNode, height: height + 1 });
+      }
+    }
+
+    return maxHeight;
+  }
 }
