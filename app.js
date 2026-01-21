@@ -60,3 +60,9 @@ console.log(tree.height(324));
 console.log(tree.height(8));
 console.log(tree.height(6345));
 console.log(tree.height(34));
+
+console.log(`the tree is balanced:::: ${tree.isBalanced()}`)
+
+const tree2 = new Tree();
+tree2.buildTree([10,8,25,3,22,38,9]);
+console.log(`the tree is balanced:::: ${tree2.isBalanced()}`)

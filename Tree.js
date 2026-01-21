@@ -338,4 +338,36 @@ export class Tree {
 
     return maxHeight;
   }
+  /** Function that checks if the tree is balanced */
+  isBalanced() {
+    function checkHeight(node) {
+      // Base case
+      if (node === null) return -1;
+
+      // Recursively get left subtree height
+      const leftHeight = checkHeight(node.leftNode);
+      if (leftHeight === -2) return -2; 
+
+      // Recursively get right subtree height
+      const rightHeight = checkHeight(node.rightNode);
+      if (rightHeight === -2) return -2; 
+
+      // Compute height difference manually
+      let diff = leftHeight - rightHeight;
+      if (diff < 0) diff = -diff;
+
+      // If difference > 1 → not balanced
+      if (diff > 1) return -2;
+
+      // Return height of current node 
+      if (leftHeight > rightHeight) {
+        return leftHeight + 1;
+      } else {
+        return rightHeight + 1;
+      }
+    }
+
+    // Tree is balanced if no -2 was ever returned
+    return checkHeight(this.root) !== -2;
+  }
 }
